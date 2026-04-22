@@ -404,8 +404,91 @@ textarea.form-input {
 
 /* ==================== RESPONSIVE ==================== */
 
+/* ── Large Tablet / Small Desktop ── */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 20px;
+  }
+}
+
+/* ── Tablet ── */
 @media (max-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+
   .container {
     padding: 0 16px;
+  }
+
+  .glass-card {
+    border-radius: var(--radius-md);
+  }
+
+  .btn-lg {
+    padding: 14px 24px;
+    font-size: 1rem;
+  }
+
+  .form-input {
+    padding: 10px 14px;
+    font-size: 0.9rem;
+  }
+
+  h1 {
+    font-size: 1.5rem !important;
+  }
+
+  h2 {
+    font-size: 1.2rem !important;
+  }
+}
+
+/* ── Mobile ── */
+@media (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
+
+  .container {
+    padding: 0 12px;
+  }
+
+  .btn {
+    padding: 10px 18px;
+    font-size: 0.85rem;
+  }
+
+  .btn-lg {
+    padding: 12px 20px;
+    font-size: 0.95rem;
+    width: 100%;
+  }
+
+  .glass-card {
+    border-radius: var(--radius-sm);
+    padding: 16px;
+  }
+
+  .glass-card:hover {
+    transform: none;
+  }
+
+  .form-group {
+    margin-bottom: 16px;
+  }
+
+  .form-label {
+    font-size: 0.85rem;
+  }
+
+  .form-input {
+    padding: 10px 12px;
+    font-size: 0.85rem;
+  }
+
+  .alert {
+    padding: 10px 14px;
+    font-size: 0.85rem;
   }
 }

@@ -296,6 +296,14 @@
 }
 
 @media (max-width: 768px) {
+  .dashboard-page {
+    padding: 20px 16px;
+  }
+
+  .dashboard-header h1 {
+    font-size: 1.5rem;
+  }
+
   .quick-actions {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -307,5 +315,65 @@
   .prediction-main {
     flex-direction: column;
     text-align: center;
+  }
+
+  .prediction-card {
+    padding: 20px;
+  }
+
+  .prediction-header {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .prediction-meta {
+    flex-wrap: wrap;
+  }
+
+  .recent-item {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-page {
+    padding: 16px 12px;
+  }
+
+  .quick-actions {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .action-card {
+    padding: 14px;
+  }
+
+  .action-icon {
+    font-size: 1.5rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .stat-value {
+    font-size: 1.6rem;
+  }
+
+  .countdown-number {
+    font-size: 2rem;
+  }
+
+  .date-value {
+    font-size: 1.1rem;
+  }
+
+  .tips-section,
+  .recent-section {
+    padding: 16px;
   }
 }
