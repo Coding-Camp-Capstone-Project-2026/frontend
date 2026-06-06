@@ -60,7 +60,7 @@ export default function AnalyticsPage() {
     );
   }
 
-  const { cycleStats, recentCyclesList, correlation, symptomDistribution, moodDistribution, lifestyleTrends } = data;
+  const { cycleStats, recentCyclesList, correlation, symptomDistribution, moodDistribution, lifestyleTrends, totalDailyLogs, monthlyData } = data;
 
   // 1. Calculate needle rotation for Speedometer Gauge (SD ranges 0 to 6 days)
   // standard deviation regularityScore: 0 (most regular) to 6 (irregular)
@@ -110,6 +110,13 @@ export default function AnalyticsPage() {
     });
   }
 
+  // Format month label
+  const formatMonthLabel = (monthStr) => {
+    const [y, m] = monthStr.split('-');
+    const d = new Date(parseInt(y), parseInt(m) - 1, 1);
+    return d.toLocaleDateString('id-ID', { month: 'short', year: 'numeric' });
+  };
+
   return (
     <div className="analytics-page container animate-fade-in">
       <header className="page-header analytics-header">
@@ -138,6 +145,13 @@ export default function AnalyticsPage() {
           <span className="card-stat-num">{cycleStats.avgPeriodLength || '—'} hari</span>
           <span className="card-stat-title">Rata-rata Durasi Haid</span>
           <p className="card-stat-desc">Lama peluruhan dinding rahim</p>
+        </div>
+
+        <div className="analytics-stat-card glass-card">
+          <span className="card-stat-emoji">📝</span>
+          <span className="card-stat-num">{totalDailyLogs || 0}</span>
+          <span className="card-stat-title">Total Log Harian</span>
+          <p className="card-stat-desc">Seluruh catatan gejala & gaya hidup</p>
         </div>
 
         <div className="analytics-stat-card glass-card">
@@ -246,6 +260,43 @@ export default function AnalyticsPage() {
               </div>
             )}
           </div>
+
+          {/* Monthly Historical Tracking */}
+          {monthlyData && monthlyData.length > 0 && (
+            <div className="analytics-card glass-card monthly-card">
+              <h3>📅 Tracking Historis Bulanan</h3>
+              <p className="section-subtitle">Agregasi data log harian per bulan — menunjukkan tren kesehatan jangka panjang Anda.</p>
+              
+              <div className="monthly-table-wrapper">
+                <table className="monthly-table">
+                  <thead>
+                    <tr>
+                      <th>Bulan</th>
+                      <th>Log</th>
+                      <th>Mood</th>
+                      <th>Tidur</th>
+                      <th>Stres</th>
+                      <th>Puasa</th>
+                      <th>Gejala</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {monthlyData.map((m, idx) => (
+                      <tr key={idx}>
+                        <td className="month-label-cell">{formatMonthLabel(m.month)}</td>
+                        <td>{m.totalLogs} hari</td>
+                        <td>{m.avgMood !== null ? `${m.avgMood}/5` : '—'}</td>
+                        <td>{m.avgSleep !== null ? `${m.avgSleep}/5` : '—'}</td>
+                        <td>{m.avgStress !== null ? `${m.avgStress}/5` : '—'}</td>
+                        <td>{m.fastingDays} hari</td>
+                        <td>{m.symptomCount} gejala</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Correlation & Mood & Symptoms */}
@@ -380,3 +431,4 @@ export default function AnalyticsPage() {
     </div>
   );
 }
+
