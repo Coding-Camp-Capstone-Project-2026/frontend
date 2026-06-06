@@ -239,6 +239,13 @@ export default function Dashboard() {
                   </div>
                 </div>
               </div>
+
+              {prediction.message && (
+                <div className="dash-pred-message animate-fade-in">
+                  <span>⚠️</span>
+                  <span>{prediction.message}</span>
+                </div>
+              )}
             </div>
           </div>
         ) : (

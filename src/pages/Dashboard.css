@@ -159,6 +159,21 @@
 .dash-meta-val { display: block; font-size: 0.9rem; font-weight: 700; color: var(--gray-800); }
 .dash-meta-label { display: block; font-size: 0.68rem; color: var(--gray-400); }
 
+/* Prediction Warning/Info Message */
+.dash-pred-message {
+  margin-top: 16px;
+  padding: 10px 14px;
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  border-radius: var(--radius-md);
+  color: #b45309;
+  font-size: 0.78rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 /* Empty state */
 .dash-pred-empty {
   text-align: center; padding: 28px;
